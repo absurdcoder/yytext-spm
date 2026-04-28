@@ -1503,6 +1503,7 @@ fail:
         return [YYTextPosition positionWithOffset:position affinity:YYTextAffinityBackward];
     }
     
+    /* 高版本ios sdk(26.4)报错
     [self _insideComposedCharacterSequences:line position:position block: ^(CGFloat left, CGFloat right, NSUInteger prev, NSUInteger next) {
         if (isVertical) {
             position = fabs(left - point.y) < fabs(right - point.y) < (right ? prev : next);
@@ -1517,6 +1518,15 @@ fail:
         } else {
             position = fabs(left - point.x) < fabs(right - point.x) < (right ? prev : next);
         }
+    }];*/
+    
+    CGFloat target = isVertical ? point.y : point.x;
+    [self _insideComposedCharacterSequences:line position:position block: ^(CGFloat left, CGFloat right, NSUInteger prev, NSUInteger next) {
+        position = fabs(left - target) < fabs(right - target) ? prev : next;
+    }];
+    
+    [self _insideEmoji:line position:position block: ^(CGFloat left, CGFloat right, NSUInteger prev, NSUInteger next) {
+        position = fabs(left - target) < fabs(right - target) ? prev : next;
     }];
     
     if (position < _visibleRange.location) position = _visibleRange.location;
