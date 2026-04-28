@@ -125,12 +125,12 @@ static dispatch_queue_t YYTextAsyncLayerGetReleaseQueue() {
         if (task.didDisplay) task.didDisplay(self, YES);
         return;
     }
-    
-    if (self.bounds.size < 1 || self.bounds.size.height < 1) {
+
+    if (self.bounds.size.width < 1 || self.bounds.size.height < 1) {
         self.contents = nil;
         return;
     }
-    
+
     if (async) {
         if (task.willDisplay) task.willDisplay(self);
         _YYTextSentinel *sentinel = _sentinel;

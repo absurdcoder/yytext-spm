@@ -513,6 +513,13 @@ Installation
 3. Import \<YYText/YYText.h\>.
 
 
+### Swift Package Manager
+
+1. In Xcode, add this repository as a package dependency.
+2. Select the `YYText` library product for your target.
+3. Import `YYText` in Swift or \<YYText/YYText.h\> in Objective-C.
+
+
 ### Manually
 
 1. Download all the files in the `YYText` subdirectory.
@@ -1058,6 +1065,13 @@ debugOptions.CGGlyphBorderColor = [UIColor colorWithRed:1.000 green:0.524 blue:0
 1. 在 Cartfile 中添加 `github "ibireme/YYText"`。
 2. 执行 `carthage update --platform ios` 并将生成的 framework 添加到你的工程。
 3. 导入 \<YYText/YYText.h\>。
+
+
+### Swift Package Manager
+
+1. 在 Xcode 中将当前仓库添加为 package dependency。
+2. 为目标选择 `YYText` library product。
+3. Swift 中导入 `YYText`，Objective-C 中导入 \<YYText/YYText.h\>。
 
 
 ### 手动安装
